@@ -1,0 +1,90 @@
+/* src/components/TinyTerminal.css */
+
+.tiny-terminal-overlay {
+    position: fixed;
+    bottom: 0;
+    left: 0; /* Align to the left */
+    width: 100%; /* Full width initially */
+    max-width: 700px; /* Max width */
+    height: 250px; /* Fixed height */
+    /* Use CSS variables for background and text colors */
+    background-color: rgba(var(--color-terminal-bg-rgb)); /* Slightly transparent card bg */
+    color: hsl(var(--color-text-primary-hsl));
+    border-top: 1px solid rgb(var(--color-border-rgb)); /* Use border color variable */
+    backdrop-filter: blur(10px); /* Optional: blur background */
+    z-index: 100; /* Ensure it's above other content */
+    padding: 10px 15px;
+    font-family: 'Courier New', Courier, monospace; /* Monospace font */
+    font-size: 0.9rem;
+    overflow: hidden; /* Prevent content overflow */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Smooth transition */
+    box-shadow: 0 -4px 10px rgb(var(--color-box-shadow-rgb)); /* Subtle shadow */
+    transform: translateY(0); /* Start visible */
+    opacity: 1;
+  }
+  
+  .tiny-terminal-overlay:not(:focus-within) {
+      /* Optional: Slightly fade if not focused, adjust as needed */
+      /* opacity: 0.95; */
+  }
+  
+  .tiny-terminal-output {
+    flex-grow: 1; /* Take available space */
+    overflow-y: auto; /* Enable scrolling for output */
+    margin-bottom: 8px;
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: rgb(var(--color-border-rgb)) transparent; /* Scrollbar colors */
+  }
+  
+  /* Webkit scrollbar styling */
+  .tiny-terminal-output::-webkit-scrollbar {
+    width: 6px;
+  }
+  .tiny-terminal-output::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .tiny-terminal-output::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--color-border-rgb));
+    border-radius: 3px;
+    border: 1px solid transparent; /* Optional border */
+  }
+  
+  
+  .terminal-line {
+    line-height: 1.4;
+  }
+  
+  .terminal-line.input {
+    color: hsl(var(--color-text-primary-hsl)); /* Make input stand out slightly */
+  }
+  
+  .terminal-line.output {
+    /* Default output color is the terminal's base color */
+  }
+  
+  
+  .terminal-prompt {
+    /* Use interactive accent color for the prompt */
+    color: hsl(var(--color-interactive-accent-hsl));
+    margin-right: 8px;
+    user-select: none; /* Prevent selecting the prompt */
+  }
+  
+  .tiny-terminal-input-form {
+    display: flex;
+    align-items: center;
+  }
+  
+  .tiny-terminal-input {
+    flex-grow: 1;
+    background: none;
+    border: none;
+    outline: none;
+    /* Use primary text color for input field */
+    color: hsl(var(--color-text-primary-hsl));
+    font-family: inherit;
+    font-size: inherit;
+    padding: 2px 0; /* Minimal padding */
+  }
