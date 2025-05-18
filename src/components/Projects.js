@@ -1,50 +1,334 @@
 import React, { useState } from 'react';
 import ScrollAnimatedCard from './ScrollAnimatedCard';
-import ProjectModal from './ProjectModal'; // ProjectModal is now themed
+import ProjectModal from './ProjectModal';
 import { AnimatePresence } from 'framer-motion';
 
 const projects = [
-    // Your project data here... (assuming structure is unchanged)
-  {
-    title: "Python Scientific Calculator",
-    description: "A simple GUI calculator built with Python handling complex scientific expressions.",
-    technologies: ["Python", "Tkinter"],
-    githubLink: "#", // Replace
-    demoLink: "#", // Replace
-    detailedOverview: "This project involved building a graphical user interface using Tkinter...",
-    skillsAcquired: ["GUI Development (Tkinter)", "Expression Parsing",],
-    images: ["https://via.placeholder.com/800x600?text=Calculator+Screenshot+1",],
-  },
-   {
-    title: "Weather Data Desktop App",
-    description: "Python desktop app fetching and visualizing weather data patterns over time.",
-    technologies: ["Python", "PyQt6", "API Integration", "Data Visualization (Matplotlib)"],
-    githubLink: "#", // Replace
-    demoLink: "#", // Replace
-    detailedOverview: "Developed a desktop application using PyQt6 to interact with weather APIs...",
-    skillsAcquired: ["PyQt6 Framework", "API Consumption",],
-    images: ["https://via.placeholder.com/800x600?text=Weather+App+UI",],
-  },
     {
-    title: "Desktop App Prompt Library",
-    description: "A personal desktop library for storing and retrieving AI prompts or code snippets.",
-    technologies: ["Python", "PyQt6", "Database (SQLite)"],
-    githubLink: "#", // Replace
-    demoLink: "#", // Replace
-    detailedOverview: "A utility application built with PyQt6 allowing users to save...",
-    skillsAcquired: ["Desktop App Development", "Database Management (SQLite)",],
-    images: ["https://via.placeholder.com/800x600?text=Prompt+Library+Main",],
-  },
-  {
-    title: "AI Rhetoric Analyst Webapp",
-    description: "Web app using NLP/ML to analyze text for persuasive techniques and harmful rhetoric.",
-    technologies: ["Python", "Flask", "React", "NLP (SpaCy)", "Machine Learning (Scikit-learn)"],
-    githubLink: "#", // Replace
-    demoLink: "#", // Replace
-    detailedOverview: "This web application features a Python/Flask backend providing an API...",
-    skillsAcquired: ["Full-Stack Development", "REST API Design (Flask)",],
-    images: ["https://via.placeholder.com/800x600?text=Rhetoric+App+Input",],
-  }
+        title: "Python Scientific Calculator",
+        description: "A simple GUI calculator built with Python handling complex scientific expressions.",
+        technologies: ["Python", "PyQt5"],
+        githubLink: "#", // Replace with actual link
+        demoLink: "#", // Replace with actual link or keep "#" if none
+        images: ["https://via.placeholder.com/800x600?text=Calculator+Screenshot+1"], // Add image URLs
+        fullDescriptionMarkdown: `
+# Python Scientific Calculator
+
+## Overview
+This project is a graphical user interface (GUI) calculator developed using Python and the PyQt. It's designed to handle standard arithmetic operations as well as more complex scientific expressions. The application provides a user-friendly interface for performing calculations.
+
+## Problem
+Standard calculators often lack the ability to handle complex mathematical expressions or provide a visual history of calculations. This project aimed to create a more robust and user-friendly desktop calculator.
+
+## Skills Demonstrated:
+* Desktop Application Development (PyQt5)
+* API Consumption and Data Parsing
+* Data Visualization (Matplotlib)
+* Handling Asynchronous Operations (for API calls)
+
+## Approach
+
+### GUI Implementation
+The user interface was built entirely with PyQt5, Python's standard GUI toolkit. This involved creating buttons for numbers, operators, and functions, as well as a display area for input and results.
+
+### Expression Parsing
+A key challenge was parsing and evaluating mathematical expressions entered by the user. This was handled by leveraging Python's built-in \`eval()\` function, used cautiously within a controlled environment, or preferably, a safer expression parsing library (note: for production apps, using \`eval()\` directly with user input is a security risk; a dedicated parsing library is recommended).
+
+### Event Handling
+Each button click triggers an event that updates the display string and, when the equals button is pressed, evaluates the expression. Basic error handling was implemented for invalid expressions.
+
+## Results
+The scientific calculator successfully provides a functional GUI for performing various calculations. It demonstrates the ability to build desktop applications with Tkinter and handle basic expression evaluation.
+
+## Skills Demonstrated:
+* GUI Development (PyQt5)
+* Event Handling
+* Basic Expression Parsing
+
+## Key Takeaways
+Building this project reinforced my understanding of GUI programming principles and the event-driven model. It also highlighted the importance of secure expression handling in applications that process user input.
+`
+    },
+    {
+        title: "Weather Data Desktop App",
+        description: "Python desktop app fetching and visualizing weather data patterns over time.",
+        technologies: ["Python", "PyQt6", "API Integration", "Data Visualization (Matplotlib)"],
+        githubLink: "#", // Replace with actual link
+        demoLink: "#", // Replace with actual link or keep "#" if none
+        images: ["https://via.placeholder.com/800x600?text=Weather+App+UI"], // Add image URLs
+         fullDescriptionMarkdown: `
+# Weather Data Desktop App
+
+## Overview
+This project is a desktop application built with Python and PyQt6 that fetches and visualizes weather data. Users can specify a location and retrieve historical or forecast weather information, which is then displayed using graphical charts generated by Matplotlib.
+
+## Problem
+Accessing and understanding weather data often requires visiting multiple websites or using mobile apps. A desktop application provides a centralized tool for fetching, viewing, and analyzing weather patterns.
+
+## Approach
+
+### Desktop GUI with PyQt6
+PyQt6 was used to create the desktop interface, including input fields for location, date selectors, and areas for displaying both raw data and visualizations.
+
+### API Integration
+The application integrates with a third-party weather API, OpenWeatherMap. A second API was used to convert the users chosen location into latitude and longitude coordinates. This involved making HTTP requests, handling API keys, and parsing the JSON responses to extract relevant weather information.
+
+### Data Visualization
+Matplotlib was integrated to generate line charts & bar charts to visualize weather trends like temperature over time, precipitation and wind speed.
+
+## Results
+The weather data app successfully retrieves and displays weather information from an external API. The integration of Matplotlib allows for clear visualization of data patterns, providing users with insights beyond simple current conditions.
+
+## Key Takeaways
+This project demonstrated practical skills in building interactive desktop applications and integrating external data sources. Visualizing the data effectively was crucial for presenting complex information in an understandable way.
+`
+    },
+     {
+        title: "Desktop App Prompt Library",
+        description: "A personal desktop library for storing and retrieving AI prompts or code snippets.",
+        technologies: ["Python", "PyQt6", "Database (SQLite)"],
+        githubLink: "#", // Replace with actual link
+        demoLink: "#", // Replace with actual link or keep "#" if none
+        images: ["https://via.placeholder.com/800x600?text=Prompt+Library+Main"], // Add image URLs
+         fullDescriptionMarkdown: `
+# Desktop App Prompt Library
+
+## Overview
+This project is a personal desktop application developed with Python and PyQt6 that serves as a library for storing, organizing, and retrieving AI prompts, code snippets, or any text-based information. It uses an SQLite database for persistent storage.
+
+## Problem
+Managing and quickly accessing a growing collection of AI prompts, useful code snippets, or research notes can become challenging with simple text files or online tools. A dedicated, searchable desktop application provides a more efficient solution.
+
+## Approach
+
+### PyQt6 Interface
+A user-friendly GUI was built using PyQt6, featuring input forms for adding new entries (title, tags, content), a search bar, and a display area for viewing saved items.
+
+### SQLite Database
+An SQLite database was chosen for its simplicity and file-based nature, making it easy to manage locally. SQL queries were used to insert, retrieve, search, and delete entries.
+
+### Search and Filtering
+Implementation of search functionality allows users to quickly find relevant entries based on keywords in the title, content, or tags.
+
+## Results
+The prompt library application provides a functional system for managing text-based entries. The SQLite backend ensures data persistence, and the search feature enhances usability for retrieving saved information.
+
+## Skills Demonstrated:
+* Desktop Application Development (PyQt6)
+* Database Management (SQLite)
+* SQL Querying
+* Implementing Search Functionality
+
+## Key Takeaways
+Building this application solidified my understanding of database integration in desktop apps and the importance of efficient data retrieval mechanisms for usability.
+`
+    },
+    {
+        title: "AI Rhetoric Analyst Webapp",
+        description: "Web app using LLM's to analyze text for persuasive techniques and harmful rhetoric.",
+        technologies: ["Python", "FastAPI", "React", "LLM's", "Pydantic data validation"],
+        githubLink: "https://github.com/tomg33/WISE", // Replace with actual WISE GitHub link
+        demoLink: "#", // Replace with actual WISE demo link or keep "#" if none
+        images: [
+            "https://via.placeholder.com/800x600?text=WISE+Screenshot+1", // Add actual WISE screenshots here
+            "https://via.placeholder.com/800x600?text=WISE+Screenshot+2",
+            // Add more image URLs as needed
+        ],
+        fullDescriptionMarkdown: `
+# WISE: Wisdom in Identifying and Stopping Exploitation
+
+## Overview
+WISE is a full-stack application that analyzes text content to identify persuasive tactics and potential manipulation. The project combines a React frontend with a Python FastAPI backend, powered by Google's Gemini AI model for content analysis. WISE provides users with actionable insights about manipulation techniques in digital content and equips them with defense strategies against these tactics.
+
+## Problem
+Today's information landscape, persuasive content is increasingly sophisticated and difficult to identify. This project addressed several technical challenges:
+
+* Building an intuitive interface between advanced AI analysis and user-friendly visualizations
+* Creating a scalable backend system that processes various text formats and returns structured data
+* Developing a comprehensive taxonomy of manipulation tactics that could be consistently identified and categorized
+* Balancing complex analysis with accessible, educational content
+
+## Skills Demonstrated:
+
+* Full-Stack Development: React frontend, Python/FastAPI backend
+* API Design: RESTful endpoints with structured request/response patterns
+* AI Integration: Prompt engineering and response parsing with Gemini AI
+* Data Visualization: Custom charts and interactive displays with Recharts
+* Error Handling: Comprehensive exception management across the stack
+
+## Approach
+
+### Backend Architecture:
+
+I developed a Python-based API service using FastAPI to handle content analysis:
+
+\`\`\`
+app/
+├── main.py # FastAPI entry point and route definitions
+├── models.py # Pydantic data models for structured responses
+├── analysis_module.py # Core analysis logic using Gemini AI
+├── constants.py # Centralized configuration and text constants
+└── taxonomy_kb.json # Knowledge base of manipulation tactics
+\`\`\`
+
+The backend implements:
+
+* Structured prompt engineering for consistent AI analysis
+* Document processing for multiple formats (.txt, .md, .docx)
+* Error handling and validation through custom exception types
+* Category calculation and post-processing of AI responses
+
+### Frontend Architecture:
+
+I built a React frontend focused on data visualization and educational content:
+
+\`\`\`
+src/
+├── components/
+│   ├── AnalysisModal.js # Text input handling
+│   ├── ConfidenceGauge.js # Analysis confidence visualization
+│   ├── OverviewTabContent.js # Results dashboard
+│   ├── LearningHubContent.js # Educational resources
+│   └── ...
+├── hooks/
+│   └── useAnalysisApi.js # API integration logic
+└── ...
+\`\`\`
+
+Key frontend features include:
+
+* Interactive dashboard with multiple visualization types
+* Educational content tied to the taxonomy of persuasion tactics
+* Dynamic modal system for detailed exploration of tactics
+* Responsive design accommodating various device sizes
+
+## Integration Points
+
+The project uses several critical integration patterns:
+
+* Structured API Responses: Defined Pydantic models ensure consistent data structure between backend and frontend
+* Content Analysis Pipeline: Multi-stage processing from text input to categorized tactics
+* Taxonomy Application: A shared taxonomy of tactics provides consistency between AI analysis and UI presentation
+
+## Challenges & Solutions
+
+### Challenge: Creating Structured AI Responses
+
+The backend needed to generate consistent, structured analysis results that could be reliably visualized.
+
+Solution I implemented:
+
+* Detailed prompt engineering with explicit JSON schema requirements
+* Pydantic validation to enforce response structure
+* Post-processing to calculate derived data like category distributions
+
+\`\`\`python
+# From analysis_module.py
+async def run_wise(file_content: str) -> dict:
+    model_name = "models/gemini-2.0-flash"
+    contents = [
+        "Persona: Informed Persuasion Analyst", f"Objective: Deconstruct and analyse the following text...",
+        # Structured instructions for AI...
+    ]
+
+    response = await asyncio.to_thread(
+        client.models.generate_content,
+        model=model_name,
+        contents=contents,
+        config={
+             'response_mime_type': "application/json",
+            'response_schema': AnalysisResultFromAPI
+         }
+    )
+    # Post-processing and category calculation...
+\`\`\`
+
+## Challenge: Visualizing Complex Analysis
+
+The frontend needed to present complex analysis data in an accessible way.
+Solution: I created:
+
+* A multi-layered dashboard with progressive disclosure
+* Custom visualization components for different types of data
+* Interactive elements to explore tactics in detail
+
+\`\`\`jsx
+// From OverviewTabContent.js
+<div className="grid grid-cols-1 md:grid-cols-2 gap-10 mx-16">
+  {/* Tactics by Category Chart */}
+  <div className="bg-base-200 border border-base-300 rounded-lg shadow-lg p-6">
+    <h2 className="text-xl font-semibold mb-4 text-base-content text-center">
+      Tactics by Category
+    </h2>
+    <ResponsiveContainer width="100%" height={300}>
+      <BarChart
+        data={analysisData.manipulationByCategory}
+        layout="horizontal"
+        margin={{ top: 5, right: 10, left: -25, bottom: 5 }}
+      >
+        {/* Chart configuration... */}
+      </BarChart>
+    </ResponsiveContainer>
+  </div>
+    {/* Confidence Score Gauge */}
+  <div
+     className="bg-base-200 border border-base-300 rounded-lg shadow-lg p-6"
+    onClick={handleGaugeClick}
+  >
+    <ConfidenceGauge
+       score={analysisData.metadata?.confidenceScore}
+       note={analysisData.overall_assessment?.confidence_score_note}
+    />
+  </div>
+</div>
+\`\`\`
+
+## Challenge: File Processing and Error Handling
+
+The application needed robust handling of various file formats and potential errors.
+Solution: I implemented:
+
+* Content-type detection and appropriate processing paths
+* Explicit error handling with user-friendly error messages
+* Async file processing with proper resource management
+\`\`\`python
+# From main.py
+@app.post("/api/analyze")
+async def analyze_text(file: UploadFile = File(...)):
+    try:
+        content_bytes = await file.read()
+        # Determine content type and extract text
+        if content_type.startswith("text/") or filename.endswith(".txt") or filename.endswith(".md"):
+            content_str = content_bytes.decode('utf-8')
+        elif content_type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+            document = Document(io.BytesIO(content_bytes))
+            content_str = "\\n".join([para.text for para in document.paragraphs])
+        else:
+            # Fallback processing...
+            # Analysis and error handling...
+\`\`\`
+
+## Results
+
+The WISE application successfully delivers:
+
+* Accurate Analysis: Integration with Gemini AI provides detailed identification of persuasion tactics
+* Educational Content: Comprehensive resources on manipulation techniques and defense strategies
+* Intuitive Interface: Progressive disclosure of complex analysis through layered visualization
+* Robust Processing: Reliable handling of various text formats with appropriate error management
+
+## Key Takeaways
+
+Building WISE strengthened my skills in:
+
+Creating effective integrations between AI systems and user interfaces
+Designing data visualization that balances complexity with accessibility
+Implementing robust error handling in full-stack applications
+Managing structured data throughout a complex processing pipeline
+
+The project demonstrates my ability to work across the full stack, from AI prompt engineering to responsive frontend development, creating a cohesive application that addresses a meaningful problem.
+`
+    }
 ];
 
 
@@ -63,7 +347,6 @@ const Projects = () => {
 
   return (
     <div className="container mx-auto px-4 relative">
-      {/* section-title class handles its own theming */}
       <h2 className="section-title">Projects</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
         {projects.map((project, index) => (

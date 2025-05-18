@@ -18,7 +18,8 @@
     --color-section-bg-1-rgb: 0, 0, 0; /* Match main bg */
     --color-section-bg-2-rgb: 31, 31, 31; /* #1F1F1F */
 
-    --color-terminal-bg-rgb: 0, 0, 0, 90%; /* #1F1F1F */
+    --color-terminal-bg-rgb: 50, 50, 50; /* #1F1F1F */
+    --color-terminal-prompt-rgb: 56, 255, 43; /* #38ff2b */
     --color-box-shadow-rgb: 100, 100, 100; /* #1F1F1F */
     --color-slider-bg-rgb: 100, 100, 100; /* Light grey #e0e0e0 */
 
@@ -46,6 +47,7 @@
 
     --color-slider-bg-rgb: 225, 225, 225; /* Light grey #e0e0e0 */
     --color-terminal-bg-rgb: 255, 255, 255, 90%; /* Off-white #f5f5f5 */
+    --color-terminal-prompt-rgb: 38, 151, 38; /* #269726 */
     --color-box-shadow-rgb: 50, 50, 50; /* #1F1F1F */
 
     --color-text-primary-hsl: 0, 0%, 15%; /* Dark grey */
@@ -54,6 +56,7 @@
     --color-interactive-hsl: 0, 0%, 5%; /* Near Black */
      /* Keep accent same or change? Let's keep it */
     --color-interactive-accent-hsl: 300, 67%, 50%; /* Fuchsia */
+    --color-text-color-circle-hsl: 0, 0, 0; /* White */
 
 
     /* Opacity can remain the same, backgrounds just become lighter */
@@ -70,6 +73,101 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  .navbar {
+    --thickness: 4px;
+    position: sticky;
+    top: 0;
+    /*
+      Very opaque, for unsupported browsers.
+      Overwritten in the feature queries below.
+    */
+    background: hsl(0deg 0% 100% / 0.95);
+  }
+
+  /*
+    This code gets applied for folks using
+    browsers that support backdrop-filter.
+  */
+  @supports
+    (backdrop-filter: blur(16px)) or
+    (-webkit-backdrop-filter: blur(16px))
+  {
+    .navbar {
+      background: hsl(0deg 0% 100% / 0.5);
+    }
+
+    .backdrop {
+      position: absolute;
+      inset: 0;
+      /*
+        These prefixed properties are usually
+        added automatically by tooling:
+      */
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        hsl(0deg 0% 95%),
+        transparent 50%
+      );
+      pointer-events: none;
+    }
+
+    .backdrop-edge {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: var(--thickness);
+      background: hsl(0deg 0% 100% / 0.1);
+      -webkit-backdrop-filter: blur(12px) brightness(0.96);
+      backdrop-filter: blur(12px) brightness(0.96);
+      transform: translateY(100%);
+      pointer-events: none;
+    }
+  }
+
+  /*
+    This code gets applied for folks using
+    browsers that support mask-image. This
+    adds the "consider near elements"
+    optimization discussed in this article.
+  */
+  @supports
+    (mask-image: none) or
+    (-webkit-mask-image: none)
+  {
+    .backdrop {
+      height: 200%;
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        black 0% 50%,
+        transparent 50% 100%
+      );
+      mask-image: linear-gradient(
+        to bottom,
+        black 0% 50%,
+        transparent 50% 100%
+      );
+    }
+    .backdrop-edge {
+      height: 100%;
+      inset: 0;
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        black 0,
+        black var(--thickness),
+        transparent var(--thickness)
+      );
+      mask-image: linear-gradient(
+        to bottom,
+        black 0,
+        black var(--thickness),
+        transparent var(--thickness)
+      );
+    }
+  }}
+
   /* Apply transition to all elements for smoother theme changes */
   *, ::before, ::after {
     transition: background-color var(--theme-transition-duration) ease-in-out, color var(--theme-transition-duration) ease-in-out, border-color var(--theme-transition-duration) ease-in-out;
@@ -80,7 +178,7 @@
     @apply font-heading font-bold tracking-tight text-text-primary; /* Updated text color */
     line-height: 1.1;
   }
-  h1 { @apply font-display text-5xl md:text-7xl; }
+  h1 { @apply font-display tracking-tight text-text-primary text-5xl md:text-7xl; }
   h2 { @apply text-4xl md:text-6xl font-semibold; }
   h3 { @apply text-2xl md:text-3xl font-semibold; }
   h4 { @apply text-xl md:text-2xl font-semibold; }
@@ -93,8 +191,6 @@
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
-}
-
 /* Custom component utilities (Update colors) */
 @layer components {
   .section-title {

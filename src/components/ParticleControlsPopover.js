@@ -17,7 +17,7 @@ const ParticleControlsPopover = ({ settings, onSettingsChange, onClose }) => {
   return (
     <div
       // Updated popover styles: bg, border, text
-      className="absolute top-full right-0 mt-2 w-auto bg-card-bg rounded-lg shadow-xl border border-border-color p-6 z-60 text-text-secondary text-sm" // Base text secondary
+      className="absolute top-full right-0 mt-2 w-auto bg-section-bg-2 rounded-lg shadow-xl border border-border-color p-6 z-60 text-text-secondary text-sm" // Base text secondary
       onClick={stopPropagation}
       role="dialog"
       aria-label="Particle Settings Controls"

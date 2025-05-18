@@ -25,11 +25,6 @@
     opacity: 1;
   }
   
-  .tiny-terminal-overlay:not(:focus-within) {
-      /* Optional: Slightly fade if not focused, adjust as needed */
-      /* opacity: 0.95; */
-  }
-  
   .tiny-terminal-output {
     flex-grow: 1; /* Take available space */
     overflow-y: auto; /* Enable scrolling for output */
@@ -60,14 +55,9 @@
     color: hsl(var(--color-text-primary-hsl)); /* Make input stand out slightly */
   }
   
-  .terminal-line.output {
-    /* Default output color is the terminal's base color */
-  }
-  
-  
   .terminal-prompt {
     /* Use interactive accent color for the prompt */
-    color: hsl(var(--color-interactive-accent-hsl));
+    color: rgb(var(--color-terminal-prompt-rgb));
     margin-right: 8px;
     user-select: none; /* Prevent selecting the prompt */
   }

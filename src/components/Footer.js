@@ -28,7 +28,7 @@ const Footer = ({ onToggleTerminal }) => {
               aria-label="Toggle Terminal"
               title="Toggle Terminal"
               data-terminal-toggle // Add attribute to identify the button
-              className="ml-2 text-text-muted  hover:text-interactive-accent animate-pulse"
+              className="ml-2 text-interactive-accent  hover:text-interactive-accent animate-pulse"
             >
                <FiTerminal className="w-4 h-4 animate-pulse" />
             </button>
