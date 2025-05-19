@@ -171,7 +171,7 @@ const ProjectModal = ({ project, onClose }) => {
         </div>
 
         {/* Footer with Links */}
-         <div className="flex justify-end items-center gap-4 p-6 border-t border-border-color/30 sticky bottom-0 bg-card-bg z-10">
+         <div className="flex justify-end items-center gap-4 p-6 border-t border-border-color/30 sticky bottom-0 z-10"  style={{ background: 'rgb(var(--color-section-bg-2-rgb))' }}>
             {project.githubLink && project.githubLink !== "#" && (
                 <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm bg-border-color/50 hover:bg-border-color/80 text-text-secondary hover:text-primary px-4 py-2 rounded-md transition-colors duration-300">
                   <FiGithub className="w-4 h-4" /> GitHub

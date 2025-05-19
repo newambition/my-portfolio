@@ -3,6 +3,11 @@ import ScrollAnimatedCard from './ScrollAnimatedCard';
 import ProjectModal from './ProjectModal';
 import { AnimatePresence } from 'framer-motion';
 
+
+
+
+
+
 const projects = [
     {
         title: "Python Scientific Calculator",
@@ -128,10 +133,13 @@ Building this application solidified my understanding of database integration in
         description: "Web app using LLM's to analyze text for persuasive techniques and harmful rhetoric.",
         technologies: ["Python", "FastAPI", "React", "LLM's", "Pydantic data validation"],
         githubLink: "https://github.com/tomg33/WISE", // Replace with actual WISE GitHub link
-        demoLink: "#", // Replace with actual WISE demo link or keep "#" if none
+        demoLink: "https://get-wise.life/", // Replace with actual WISE demo link or keep "#" if none
         images: [
-            "https://via.placeholder.com/800x600?text=WISE+Screenshot+1", // Add actual WISE screenshots here
-            "https://via.placeholder.com/800x600?text=WISE+Screenshot+2",
+            "/WISEabout.png", // Add actual WISE screenshots here
+            "/WISEapikey.png",
+            "/WISEdashboard.png",
+            "/WISEtacticdetail.png",
+            "/WISElearning.png"
             // Add more image URLs as needed
         ],
         fullDescriptionMarkdown: `
